@@ -151,3 +151,24 @@ aside nav a:hover {
     grid-template-columns: 220px 1fr;
     gap: 30px;
 }
+
+@media (max-width: 768px) {
+
+    header {
+        grid-template-columns: 1fr;
+        justify-items: center;
+        gap: 20px;
+    }
+
+    header img {
+        justify-self: center;
+    }
+
+    nav {
+        grid-column: 1;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+}
