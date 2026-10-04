@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rígnes Game Studio</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+    <header>
+        <img src="../imagens/logo/logo-rignes.png" alt="logomarca" width="200">
+        <nav>
+            <a href="../index.html">Início</a>
+            <a href="../index.html#sobre">Sobre</a>
+            <a href="../index.html#jogos">Jogos</a>
+            <a href="unity.html">Tutoriais</a>
+            <a href="../index.html#contato">Contato</a>
+        </nav>
+    </header>
+
+    <main class="pagina-tutorial">
+        <aside>
+            <h2>Unity</h2>
+
+            <nav>
+                <a href="#introducao">Introdução</a>
+                <a href="#preparacao">Preparando o personagem</a>
+                <a href="#input">Input System</a>
+                <a href="#raycast">Raycast</a>
+                <a href="#camera">Câmera</a>
+            </nav>
+        </aside>
+        <section>
+
+            <h1>Tutoriais de Unity</h1>
+
+            <h2 id="introducao">Introdução</h2>
+            <p>
+                Neste tutorial vamos aprender como criar um movimento básico de personagem em primeira pessoa na Unity.
+            </p>
+            <p>
+                Utilizaremos formas basicas para criar um personagem simples e aprender a movimentá-lo utilizando
+                o novo Input System da Unity. Durante este tutorial vamos entender como separar o movimento
+                do personagem da rotação da câmera.
+            </p>
+            <p>
+                Uma observação importante essa serie de tutoriais que pretendo fazer
+                vai avançar gradualmente conforme vou adquirindo mais conhecimento sobre a Unity.
+            </p>
+
+            <h2 id="preparacao">Preparando o personagem</h2>
+
+            <p>Neste tutorial, vamos criar a base de um pequeno jogo em primeira pessoa,
+                também conhecido como FPS (First-Person Shooter). Nesse tipo de jogo,
+                a câmera representa a visão do jogador, permitindo que ele observe o cenário como se estivesse dentro do
+                próprio personagem.</p>
+
+            <p>Para começar, vamos criar um chão, uma cápsula para representar nosso personagem e uma câmera que ficará
+                vinculada a ele. Por enquanto, utilizaremos formas básicas da Unity, sem nos preocupar com modelos ou
+                animações.
+            </p>
+
+            <h3>1. Criando o chão</h3>
+
+            <p>Na aba Hierarchy, localizada à esquerda da tela, como mostra a Figura 001, clique com o botão direito em
+                uma área vazia. No menu que aparecer, acesse 3D Object e selecione Plane.</p>
+
+            <p>Depois de criar o plano, renomeie-o para Chão. Ele será a superfície onde nosso personagem poderá
+                caminhar futuramente.
+            </p>
+
+            <img src="../imagens/exemplos/001.png" alt="Figura 001" width="400">
+
+            <h3>2. Criando o personagem</h3>
+
+            <p>Agora, clique com o botão direito em uma área vazia da aba Hierarchy, acesse 3D Object e selecione
+                Capsule.</p>
+
+            <p>Renomeie o objeto criado para Personagem. Essa cápsula será uma representação provisória do jogador
+                durante o desenvolvimento do tutorial.
+            </p>
+
+            <h3>3. Adicionando a câmera</h3>
+
+            <p>Ao criar uma cena nova, a Unity normalmente já inclui uma câmera chamada Main Camera. Verifique se ela
+                aparece na aba Hierarchy. Caso não exista, clique com o botão direito em uma área vazia, acesse a opção
+                Camera e crie uma.</p>
+
+            <p>Agora precisamos fazer com que a câmera acompanhe o personagem. Para isso, arraste o objeto Main Camera
+                sobre o objeto Personagem na aba Hierarchy.</p>
+
+            <p>Quando a câmera aparecer recuada abaixo do personagem, significa que ela se tornou sua filha na
+                hierarquia, conforme a figura 002 abaixo.</p>
+
+            <img src="../imagens/exemplos/002.png" alt="Figura 002" width="400">
+
+            <p>Essa relação é importante porque a câmera passará a acompanhar a posição e a rotação do personagem. Mais
+                adiante, ajustaremos sua posição para ficar na altura dos olhos e implementaremos os controles para
+                olhar ao redor.</p>
+
+            <h3>Controle da câmera</h3>
+
+            <p>Para começarmos a programar o comportamento do personagem, precisamos criar um script em C#. Esse script
+                será responsável por receber os comandos que posteriormente controlarão o personagem e a câmera.</p>
+
+            <p>Na janela Project, dentro da pasta onde você está organizando seus scripts, clique com o botão direito em
+                uma área vazia e selecione Create. Depois, vá até Scripting e selecione a opção MonoBehaviour Script,
+                conforme podemos ver na Figura 003 logo abaixo.
+
+            </p>
+
+            <img src="../imagens/exemplos/003.png" alt="Figura 003" width="400">
+
+            <p>Depois de criar o script, renomeie o arquivo. Neste exemplo, vamos utilizar o nome MouseLook. Esse script
+                será usado para criar os controles da câmera através do mouse.</p>
+
+            <p>Esse script já vem com um código-base sobre o qual iremos trabalhar. Antes de começarmos a adicionar
+                novos comandos, vamos entender primeiro a sua estrutura.</p>
+
+            <p>using UnityEngine;<br>
+
+                public class MouseLook : MonoBehaviour<br>
+                {<br>
+                }</p>
+
+            <h3>Using UnityEngine:</h3>
+
+            <p>Essa linha permite que nosso script utilize as classes e os recursos disponibilizados pela Unity.
+            </p>
+
+            <p>Por exemplo, MonoBehaviour, que aparece na declaração da classe logo abaixo, faz parte da API da Unity.
+            </p>
+
+            <h3>public class MouseLook : MonoBehaviour</h3>
+
+            <p>Aqui estamos criando uma classe chamada MouseLook. O nome da classe deve ser o mesmo nome do arquivo:
+                MouseLook.cs</p>
+
+            <p>O : MonoBehaviour indica que nossa classe herda de MonoBehaviour. Isso permite que o script seja
+                utilizado como um componente dentro de um GameObject da Unity.</p>
+
+            <h3>O que é um GameObject?</h3>
+
+            <p>Antes de continuarmos, precisamos entender um conceito importante da Unity: o GameObject.</p>
+
+            <p>Na Unity, praticamente tudo que colocamos dentro da cena é representado por um GameObject. Nosso chão,
+                nosso personagem e nossa câmera são exemplos de GameObjects.</p>
+
+            <p>Um GameObject pode receber diferentes componentes, que adicionam características e comportamentos a ele.
+                Por exemplo, uma câmera possui um componente chamado Camera, que define seu comportamento como câmera
+                dentro do jogo.</p>
+
+            <p>Os scripts que criamos também podem ser adicionados como componentes aos GameObjects. Dessa forma,
+                podemos programar comportamentos específicos para cada objeto.</p>
+
+
+            <h3>As chaves { }</h3>
+
+            <p>As chaves delimitam o conteúdo da classe.
+                Tudo que colocarmos entre essas chaves fará parte da classe MouseLook.</p>
+
+            <h2 id="input">Input System</h2>
+            <p>Conteúdo sobre Input System...</p>
+
+            <h2 id="raycast">Raycast</h2>
+            <p>Conteúdo sobre Raycast...</p>
+
+            <h2 id="camera">Câmera</h2>
+            <p>Conteúdo sobre câmera...</p>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Rígnes Game Studio. Desenvolvido por Gustavo Rocha.</p>
+    </footer>
+
+</body>
+
+</html>
