@@ -155,7 +155,9 @@ aside nav a:hover {
 @media (max-width: 768px) {
 
     header {
-        background-color: red;
+        grid-template-columns: 1fr;
+        justify-items: center;
+        gap: 20px;
     }
 
     header img {
@@ -167,6 +169,11 @@ aside nav a:hover {
         justify-content: center;
         flex-wrap: wrap;
         gap: 15px;
+    }
+
+    section {
+        padding: 20px;
+        margin-bottom: 20px;
     }
 
 }
