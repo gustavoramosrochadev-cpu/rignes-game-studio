@@ -208,6 +208,10 @@ aside nav a:hover {
         font-size: 0.9rem;
     }
 
+    .pagina-tutorial {
+        display: block;
+    }
+
     .botao-menu {
         display: block;
         position: fixed;
