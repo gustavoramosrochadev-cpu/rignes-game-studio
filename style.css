@@ -254,4 +254,9 @@ aside nav a:hover {
     body {
         overflow-x: hidden;
     }
+
+    .pagina-tutorial img {
+        max-width: 100%;
+        height: auto;
+    }
 }
