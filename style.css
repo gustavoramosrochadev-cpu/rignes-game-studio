@@ -232,6 +232,7 @@ aside nav a:hover {
 
         width: 220px;
         height: 100vh;
+        box-sizing: border-box;
 
         z-index: 1000;
 
