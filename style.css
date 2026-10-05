@@ -176,4 +176,17 @@ aside nav a:hover {
         margin-bottom: 20px;
     }
 
+    .carrossel {
+        gap: 8px;
+    }
+
+    .carrossel img {
+        width: 100%;
+        height: 250px;
+    }
+
+    .carrossel button {
+        padding: 8px 10px;
+        font-size: 0.9rem;
+    }
 }
