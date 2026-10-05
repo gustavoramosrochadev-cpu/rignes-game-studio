@@ -157,6 +157,24 @@ aside nav a:hover {
     gap: 30px;
 }
 
+.espaco-anuncio {
+    width: 100%;
+    max-width: 728px;
+    min-height: 90px;
+    margin: 30px auto;
+    background-color: #101014;
+    border: 1px dashed #555;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.espaco-anuncio span {
+    color: #777;
+    font-size: 14px;
+}
+
 @media (max-width: 768px) {
 
     header {
