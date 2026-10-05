@@ -121,6 +121,10 @@ footer {
     text-align: center;
 }
 
+.botao-menu {
+    display: none;
+}
+
 aside {
     background-color: #1c1c22;
     padding: 20px;
@@ -202,5 +206,39 @@ aside nav a:hover {
     .carrossel button {
         padding: 8px 12px;
         font-size: 0.9rem;
+    }
+
+    .botao-menu {
+        display: block;
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        z-index: 1001;
+
+        background-color: #ed1745;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        padding: 10px 14px;
+        font-size: 20px;
+        cursor: pointer;
+    }
+
+    aside {
+        position: fixed;
+        top: 0;
+        left: -260px;
+        width: 220px;
+        height: 100vh;
+        z-index: 1000;
+        transition: left 0.3s ease;
+    }
+
+    aside.menu-aberto {
+        left: 0;
+    }
+
+    aside nav {
+        position: static;
     }
 }
