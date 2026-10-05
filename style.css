@@ -162,7 +162,7 @@ aside nav a:hover {
     max-width: 728px;
     min-height: 90px;
     margin: 30px auto;
-    background-color: #101014;
+    background-color: #333;
     border: 1px dashed #555;
 
     display: flex;
