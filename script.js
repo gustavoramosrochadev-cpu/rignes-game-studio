@@ -12,26 +12,32 @@ let indiceAtual = 0;
 let botaoProximo = document.getElementById("botaoProximo");
 let botaoAnterior = document.getElementById("botaoAnterior");
 
-botaoProximo.addEventListener("click", function () {
-    indiceAtual++;
-    if (indiceAtual >= imagens.length) {
-        indiceAtual = 0;
-    }
-    atualizarImagem();
-});
+if (imagemDoSite && botaoProximo && botaoAnterior) {
 
-botaoAnterior.addEventListener("click", function () {
-    indiceAtual--;
-    if (indiceAtual < 0) {
-        indiceAtual = imagens.length - 1;
-    }
-    atualizarImagem();
-});
+    botaoProximo.addEventListener("click", function () {
+        indiceAtual++;
 
-function atualizarImagem() {
-    imagemDoSite.src = imagens[indiceAtual];
+        if (indiceAtual >= imagens.length) {
+            indiceAtual = 0;
+        }
+
+        atualizarImagem();
+    });
+
+    botaoAnterior.addEventListener("click", function () {
+        indiceAtual--;
+
+        if (indiceAtual < 0) {
+            indiceAtual = imagens.length - 1;
+        }
+
+        atualizarImagem();
+    });
+
+    function atualizarImagem() {
+        imagemDoSite.src = imagens[indiceAtual];
+    }
 }
-
 const botaoMenu = document.querySelector(".botao-menu");
 const menuTutorial = document.querySelector("aside");
 
