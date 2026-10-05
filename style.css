@@ -177,21 +177,19 @@ aside nav a:hover {
     }
 
     .carrossel {
-        flex-direction: column;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
         gap: 10px;
     }
 
     .carrossel img {
         width: 100%;
         height: 250px;
+        grid-column: 1 / 3;
     }
 
     .carrossel button {
         padding: 8px 12px;
         font-size: 0.9rem;
-    }
-
-    .carrossel button:first-of-type {
-        margin-right: 10px;
     }
 }
