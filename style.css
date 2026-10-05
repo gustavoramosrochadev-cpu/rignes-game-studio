@@ -246,4 +246,8 @@ aside nav a:hover {
     aside nav {
         position: static;
     }
+
+    body {
+        overflow-x: hidden;
+    }
 }
